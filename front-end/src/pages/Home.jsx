@@ -1,9 +1,10 @@
+
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-// 28 States of India with images
+
 const STATE_IMAGES = {
   "Andhra Pradesh": "https://1.bp.blogspot.com/-GrQxPnG3n3g/YNLpohLWzVI/AAAAAAAAiAQ/WFSGuuaNqysxkkwAXiKzir9A3Tl2z3MCwCLcBGAsYHQ/s696/AndhraPradesh.jpg",
   "Arunachal Pradesh": "https://www.indianholiday.com/pictures/travelguide/other-images/dest_head_img-545.jpeg",
@@ -35,7 +36,6 @@ const STATE_IMAGES = {
   "West Bengal": "https://curlytales.com/wp-content/uploads/2023/03/west-bengal.jpg",
 };
 
-// Get states list from keys of STATE_IMAGES
 const STATES = Object.keys(STATE_IMAGES);
 
 const container = {
@@ -182,6 +182,16 @@ function StateCard({ name }) {
   const navigate = useNavigate();
   const imageUrl = STATE_IMAGES[name];
 
+  const handleExplore = () => {
+    if (name === "Tamil Nadu") {
+      // Dedicated Tamil Nadu districts page
+      navigate("/state/Tamil%20Nadu");
+    } else {
+      // Fallback for all other states
+      navigate(`/state/${encodeURIComponent(name)}`);
+    }
+  };
+
   return (
     <div className="group h-full rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 bg-white/90 backdrop-blur p-4 flex flex-col justify-between">
       <div>
@@ -194,7 +204,6 @@ function StateCard({ name }) {
           <span className="font-medium">{name}</span>.
         </p>
 
-        {/* Image instead of Scenic preview */}
         <div className="mt-4 h-24 rounded-xl overflow-hidden border">
           <img
             src={imageUrl}
@@ -205,7 +214,7 @@ function StateCard({ name }) {
       </div>
       <div className="mt-4">
         <button
-          onClick={() => navigate(`/state/${encodeURIComponent(name)}`)}
+          onClick={handleExplore}
           className="w-full py-2 px-4 text-sm font-medium rounded-xl bg-emerald-500 text-white hover:bg-emerald-600 transition-colors shadow"
         >
           Explore {name}
