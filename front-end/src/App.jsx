@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-
 import India365Home from "./pages/Home";
 import TamilNaduDistrictCards from "./components/TamilNadu"; 
 import Ariyalur from "./Districts/Tamilnadu/Ariyalur"; 
+import Chengalpattu from"./Districts/Tamilnadu/Chengalpattu";
 
 export default function App() {
   return (
@@ -19,6 +20,8 @@ export default function App() {
 
         {/* Specific district routes */}
         <Route path="/district/Ariyalur" element={<Ariyalur />} />
+
+        <Route path="/district/Chengalpattu" element={<Chengalpattu />} />
 
         {/* Generic fallback for other states */}
         <Route path="/state/:stateName" element={<StatePage />} />
