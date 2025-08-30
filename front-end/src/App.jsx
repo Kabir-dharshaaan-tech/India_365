@@ -8,6 +8,8 @@ import India365Home from "./pages/Home";
 import TamilNaduDistrictCards from "./components/TamilNadu"; 
 import Ariyalur from "./Districts/Tamilnadu/Ariyalur"; 
 import Chengalpattu from"./Districts/Tamilnadu/Chengalpattu";
+import Chennai from "./Districts/Tamilnadu/Chennai";
+
 
 export default function App() {
   return (
@@ -22,6 +24,7 @@ export default function App() {
         <Route path="/district/Ariyalur" element={<Ariyalur />} />
 
         <Route path="/district/Chengalpattu" element={<Chengalpattu />} />
+        <Route path="/district/Chennai" element={<Chennai />} />
 
         {/* Generic fallback for other states */}
         <Route path="/state/:stateName" element={<StatePage />} />
